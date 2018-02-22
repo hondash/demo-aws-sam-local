@@ -24,6 +24,9 @@
     
 ---
 
+## DyanmoDB Sample
+
+
 ```sh
 $ aws configure
 
@@ -57,4 +60,13 @@ $ cd /workspace/src/dynamodb/
 $ ./set-endpoint.sh
 $ sam local invoke -e event-list.json ConnectDynamodb --docker-network docker_SamDynamodb
 ```
+
+## SAM Api Sample
+
+```sh
+$ cd /workspace/src/api
+$ sam local start-api
+
+
+
 

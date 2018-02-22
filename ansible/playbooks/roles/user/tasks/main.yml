@@ -9,7 +9,9 @@
   user:
     name: dev
     password: "{{ 'dev' | password_hash('sha512') }}"
-    group: docker
+    groups:
+      - docker
+      - dev
 
 - name: Allow dev group to have passwordless sudo
   lineinfile:

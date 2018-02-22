@@ -1,0 +1,6 @@
+---
+
+- name: Permissive SELinux
+  selinux:
+    policy: targeted
+    state: permissive

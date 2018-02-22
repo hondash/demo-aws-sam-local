@@ -1,0 +1,6 @@
+---
+
+- name: Start dynamodb docker
+  docker_service:
+    project_src: /workspace/docker/
+    state: present

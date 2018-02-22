@@ -1,0 +1,11 @@
+---
+
+- hosts: dev
+  roles:
+    - role: selinux
+    - role: timezone
+    - role: user
+    - role: ssh
+    - role: aws-sam-local
+    - role: aws-cli
+    - role: aws-dynamodb

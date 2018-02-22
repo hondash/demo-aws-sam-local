@@ -1,0 +1,25 @@
+---
+
+- name: Check node repo is exists
+  stat:
+    path: "/etc/yum.repos.d/nodesource-el{{ ansible_distribution_major_version }}.repo"
+  register: node_repo
+
+- name: Install node dependencies
+  yum:
+    name: "{{ item }}"
+    update_cache: yes
+  with_items:
+    - gcc-c++
+    - make
+
+- name: Add node repository
+  when: not node_repo.stat.exists
+  shell: curl -sL https://rpm.nodesource.com/setup_8.x | bash -
+  args:
+    warn: false
+
+- name: Install node
+  yum:
+    name: nodejs
+    update_cache: yes

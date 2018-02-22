@@ -1,0 +1,12 @@
+version: '3'
+services:
+  dynamodb:
+    build: ./dynamodb
+    ports:
+      - 8000:8000
+    networks:
+      - SamDynamodb
+
+networks:
+  SamDynamodb:
+    driver: bridge

@@ -1,0 +1,21 @@
+---
+
+- name: Add docker group
+  group:
+    name: docker
+    state: present
+
+- name: Add user
+  user:
+    name: dev
+    password: "{{ 'dev' | password_hash('sha512') }}"
+    group: docker
+
+- name: Allow dev group to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    insertafter: "^## Allows people in group wheel to run all commands"
+    regexp: "^%dev"
+    line: "%dev ALL=(ALL) NOPASSWD: ALL"
+    validate: 'visudo -cf %s'
+    state: present

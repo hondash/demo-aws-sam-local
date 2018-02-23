@@ -12,8 +12,6 @@
     1. execute following commands.  
        `cd docker`  
        `docker-compose up`
-    1. access the following URL with web browser.  
-       `http://localhost:8000/shell/`
 1. sam local
     1. install [aws-sam-local](https://github.com/awslabs/aws-sam-local)
     1. exec the following command.
@@ -63,9 +61,12 @@ $ sam local invoke -e event-list.json ConnectDynamodb --docker-network docker_Sa
 
 ## SAM Api Sample
 
+※ VM上で 動かす場合は host を `0.0.0.0` で起動しないとホストOSのブラウザからアクセスできない
+
 ```sh
 $ cd /workspace/src/api
-$ sam local start-api
+$ sam local start-api --host 0.0.0.0 --docker-network docker_SamDynamodb
+```
 
 
 

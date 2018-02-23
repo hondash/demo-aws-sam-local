@@ -9,6 +9,8 @@ Vagrant.configure("2") do |config|
     dev.vm.box_version = "1801.02"
     dev.vm.synced_folder ".", "/workspace"
     dev.vm.network :private_network, ip: "192.168.55.10"
+    dev.vm.network :forwarded_port, guest: 3000, host: 3000
+    dev.vm.network :forwarded_port, guest: 8000, host: 8000
 
     dev.vm.provider(:virtualbox) do |vb|
       vb.gui = false

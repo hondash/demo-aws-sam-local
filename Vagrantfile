@@ -25,6 +25,7 @@ Vagrant.configure("2") do |config|
     ansible.version = "2.5.0b1"
     ansible.become = true
     ansible.become_user = "root"
+    ansible.compatibility_mode = "2.0"
     ansible.config_file = "./ansible/ansible.cfg"
     ansible.inventory_path = "./ansible/inventories"
     ansible.playbook = "./ansible/playbooks/setup.yml"

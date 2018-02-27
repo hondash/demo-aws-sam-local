@@ -6,6 +6,7 @@
     - role: timezone
     - role: user
     - role: ssh
+    - role: github
     - role: aws-sam-local
     - role: aws-cli
     - role: aws-dynamodb

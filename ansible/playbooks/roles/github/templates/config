@@ -1,0 +1,10 @@
+{% for ssh_config in ssh_configs %}
+Host {{ ssh_config.name }}
+  HostName {{ ssh_config.host_name }}
+  User {{ ssh_config.user }}
+  Port {{ ssh_config.port }}
+  IdentityFile {{ ssh_config.identity_file }}
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+
+{% endfor %}

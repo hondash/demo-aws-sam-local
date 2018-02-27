@@ -1,0 +1,26 @@
+---
+
+- name: Create directory
+  file:
+    path: /home/dev/.ssh
+    state: directory
+    mode: 0755
+
+- name: Copy SSH key
+  copy:
+    src: "{{ item }}"
+    dest: /home/dev/.ssh/
+    owner: dev
+    group: dev
+    mode: 0600
+    remote_src: no
+  with_fileglob:
+    - "{{ role_path }}/files/*"
+
+- name: SSH config
+  template:
+    src: config
+    dest: /home/dev/.ssh/config
+    owner: dev
+    group: dev
+    mode: 0644

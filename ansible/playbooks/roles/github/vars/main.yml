@@ -1,0 +1,18 @@
+---
+
+
+github_clone_ssh:
+  - url: git@github.com:honpya/demo-aws-sam-dynamodb-local.git
+    key: from files
+  - url: git@github.com:honpya/demo-aws-sam-dynamodb-local.git
+    key: from files
+
+github_clone_https:
+  - https://github.com/honpya/demo-aws-sam-dynamodb-local.git
+
+ssh_configs:
+  - name:
+    host_name: github.com
+    user: git
+    port: 22
+    identity_file: ~/.ssh/key

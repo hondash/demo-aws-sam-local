@@ -1,0 +1,29 @@
+---
+
+- name: Add IUS repository
+  yum:
+    name: https://centos7.iuscommunity.org/ius-release.rpm
+    state: present
+
+- name: disabled IUS repository
+  replace:
+    path: /etc/yum.repos.d/ius.repo
+    regexp: '^enabled=1$'
+    replace: 'enabled=0'
+    backup: no
+
+# see: https://dl.iuscommunity.org/pub/ius/stable/CentOS/7/x86_64/repoview/letter_g.group.html
+- name: Install git
+  yum:
+    name: git2u-2.16.1
+    enablerepo: ius
+    update_cache: yes
+
+- name: git-prompt.sh
+  file:
+    src: "/usr/share/doc/git2u-core-doc-2.16.1/contrib/completion/{{ item }}"
+    dest: "/etc/profile.d/{{ item }}"
+    state: link
+  with_items:
+    - git-prompt.sh
+    - git-completion.bash

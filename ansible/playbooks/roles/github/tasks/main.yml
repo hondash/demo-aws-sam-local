@@ -24,3 +24,10 @@
     owner: dev
     group: dev
     mode: 0644
+
+- name: Clone GitHub repository
+  git:
+    repo: git@github.com:honpya/demo-aws-sam-dynamodb-local.git
+    dest: /home/dev/demo-aws-sam-dynamodb-local
+    key_file: /home/dev/.ssh/key
+    ssh_opts: "-o StrictHostKeyChecking=no"

@@ -27,7 +27,8 @@
 
 - name: Clone GitHub repository
   git:
-    repo: git@github.com:honpya/demo-aws-sam-dynamodb-local.git
-    dest: /home/dev/demo-aws-sam-dynamodb-local
-    key_file: /home/dev/.ssh/key
+    repo: "{{ item.url }}"
+    dest: "/home/dev/{{ item.dir_name }}"
+    key_file: "/home/dev/.ssh/{{ item.key_name }}"
     ssh_opts: "-o StrictHostKeyChecking=no"
+  with_items: "{{ github_clone_with_ssh }}"

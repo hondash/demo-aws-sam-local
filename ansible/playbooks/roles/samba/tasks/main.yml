@@ -1,0 +1,43 @@
+---
+
+- name: Install samba
+  yum:
+    name: "{{ item }}"
+  with_items:
+    - samba-common
+    - samba
+    - samba-client
+  tags: samba
+
+- name: Samba configuration
+  template:
+    dest: /etc/samba/smb.conf
+    src: smb.conf
+    validate: 'testparm -s %s'
+  tags: samba
+
+- name: Start Samba services
+  service:
+    name: "{{ item }}"
+    state: restarted
+    enabled: yes
+  with_items:
+    - smb
+    - nmb
+  tags: samba
+
+- name: Check samba user is exists
+  shell: pdbedit -L dev
+  failed_when: samba_user.rc not in [0, 255]
+  register: samba_user
+
+- debug:
+    var: samba_user
+
+- name: Set Samba user and password
+  when: "'Username not found' in samba_user.stderr"
+  shell: >
+    (pdbedit --user=dev 2>&1 > /dev/null) \
+    || (echo dev; echo dev) \
+    | smbpasswd -s -a dev
+  tags: samba

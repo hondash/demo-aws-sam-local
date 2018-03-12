@@ -4,6 +4,7 @@
   yum:
     name: https://centos7.iuscommunity.org/ius-release.rpm
     state: present
+  tags: git
 
 - name: disabled IUS repository
   replace:
@@ -11,6 +12,7 @@
     regexp: '^enabled=1$'
     replace: 'enabled=0'
     backup: no
+  tags: git
 
 # see: https://dl.iuscommunity.org/pub/ius/stable/CentOS/7/x86_64/repoview/letter_g.group.html
 - name: Install git
@@ -18,6 +20,7 @@
     name: git2u-2.16.1
     enablerepo: ius
     update_cache: yes
+  tags: git
 
 - name: git-prompt.sh
   file:
@@ -27,3 +30,4 @@
   with_items:
     - git-prompt.sh
     - git-completion.bash
+  tags: git

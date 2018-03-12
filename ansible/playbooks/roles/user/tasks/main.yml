@@ -1,12 +1,13 @@
 ---
 
-- name: Add docker group
+- name: Add groups
   group:
     name: "{{ item }}"
     state: present
   with_items:
     - dev
     - docker
+  tags: user
 
 - name: Add user
   user:
@@ -15,6 +16,7 @@
     groups:
       - dev
       - docker
+  tags: user
 
 - name: Allow dev group to have passwordless sudo
   lineinfile:
@@ -24,3 +26,4 @@
     line: "%dev ALL=(ALL) NOPASSWD: ALL"
     validate: 'visudo -cf %s'
     state: present
+  tags: user

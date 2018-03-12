@@ -4,6 +4,7 @@
   stat:
     path: "/etc/yum.repos.d/nodesource-el{{ ansible_distribution_major_version }}.repo"
   register: node_repo
+  tags: nodejs
 
 - name: Install node dependencies
   yum:
@@ -12,14 +13,17 @@
   with_items:
     - gcc-c++
     - make
+  tags: nodejs
 
 - name: Add node repository
   when: not node_repo.stat.exists
   shell: curl -sL https://rpm.nodesource.com/setup_8.x | bash -
   args:
     warn: false
+  tags: nodejs
 
 - name: Install node
   yum:
     name: nodejs
     update_cache: yes
+  tags: nodejs

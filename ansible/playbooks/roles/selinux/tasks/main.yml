@@ -4,3 +4,4 @@
   selinux:
     policy: targeted
     state: permissive
+  tags: selinux

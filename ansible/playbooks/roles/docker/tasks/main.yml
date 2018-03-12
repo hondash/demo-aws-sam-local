@@ -4,18 +4,21 @@
   get_url:
     url: https://download.docker.com/linux/centos/docker-ce.repo
     dest: /etc/yum.repos.d/docker-ce.repo
+  tags: docker
 
 - name: Install docker
   yum:
     name: docker-ce
     update_cache: yes
     state: present
+  tags: docker
 
 - name: Install docker-compose
   pip:
     name: docker-compose
     version: 1.19.0
     state: present
+  tags: docker
 
 - name: Start docker service
   systemd:
@@ -23,3 +26,4 @@
     enabled: yes
     daemon_reload: yes
     state: started
+  tags: docker

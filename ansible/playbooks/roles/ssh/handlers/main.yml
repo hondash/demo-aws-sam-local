@@ -1,2 +1,8 @@
 ---
-# handlers file for ssh
+
+- name: Restart sshd
+  systemd:
+    name: sshd
+    daemon_reload: yes
+    state: reloaded
+  tags: ssh

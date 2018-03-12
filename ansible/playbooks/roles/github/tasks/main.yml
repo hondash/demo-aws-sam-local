@@ -5,6 +5,7 @@
     path: /home/dev/.ssh
     state: directory
     mode: 0755
+  tags: github
 
 - name: Copy SSH key
   copy:
@@ -16,6 +17,7 @@
     remote_src: no
   with_fileglob:
     - "{{ role_path }}/files/*"
+  tags: github
 
 - name: SSH config
   template:
@@ -24,6 +26,7 @@
     owner: dev
     group: dev
     mode: 0644
+  tags: github
 
 - name: Clone GitHub repository
   git:
@@ -32,3 +35,4 @@
     key_file: "/home/dev/.ssh/{{ item.key_name }}"
     ssh_opts: "-o StrictHostKeyChecking=no"
   with_items: "{{ github_clone_with_ssh }}"
+  tags: github

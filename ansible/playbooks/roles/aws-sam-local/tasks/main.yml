@@ -2,8 +2,10 @@
 
 - name: Set npm config
   shell: npm config set unsafe-perm true
+  tags: aws-sam-local
 
 - name: Install aws-sam-local with npm
   npm:
     name: aws-sam-local
     global: yes
+  tags: aws-sam-local

@@ -4,3 +4,4 @@
   docker_service:
     project_src: /workspace/docker/
     state: present
+  tags: aws-dynamodb

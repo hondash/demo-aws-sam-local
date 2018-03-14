@@ -18,7 +18,7 @@
 - name: Install git
   yum:
     name: git2u-2.16.1
-    enablerepo: ius
+    enablerepo: ius,ius-archive
     update_cache: yes
   tags: git
 

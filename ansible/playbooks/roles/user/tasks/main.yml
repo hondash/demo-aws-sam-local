@@ -13,8 +13,8 @@
   user:
     name: dev
     password: "{{ 'dev' | password_hash('sha512') }}"
+    group: dev
     groups:
-      - dev
       - docker
   tags: user
 

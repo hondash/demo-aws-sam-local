@@ -27,3 +27,31 @@
     name: nodejs
     update_cache: yes
   tags: nodejs
+
+- name: Create directory
+  file:
+    path: ~/.npm-global
+    state: directory
+    mode: 0755
+  become: yes
+  become_user: dev
+  tags: nodejs
+
+- name: Set npm global path
+  shell: npm config set prefix '~/.npm-global'
+  args:
+    warn: false
+  become: yes
+  become_user: dev
+  tags: nodejs
+
+- name: Add env variable
+  template:
+    src: nodejs.sh.j2
+    dest: /etc/profile.d/nodejs.sh
+  tags: nodejs
+
+- name: Reload env
+  shell: source /etc/profile
+  tags: nodejs
+  

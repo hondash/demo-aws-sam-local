@@ -1,12 +1,8 @@
 ---
 
-github_clone_with_ssh:
-  - url: git@key1.github.com:honpya/demo-aws-sam-dynamodb-local.git
-    key_name: key_1
-    dir_name: demo-aws-sam-dynamodb-local_1
-  # - url: git@key2.github.com:honpya/demo-aws-sam-dynamodb-local.git
-  #   key_name: key_2
-  #   dir_name: demo-aws-sam-dynamodb-local_2
+github_clone_url: git@key1.github.com:honpya/demo-aws-sam-dynamodb-local.git
+github_clone_key_name: key_1
+github_clone_dir_name: demo-aws-sam-dynamodb-local
 
 ssh_configs:
   - name: key1.github.com

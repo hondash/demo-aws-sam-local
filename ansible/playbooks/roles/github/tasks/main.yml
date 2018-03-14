@@ -4,6 +4,8 @@
   file:
     path: /home/dev/.ssh
     state: directory
+    owner: dev
+    group: dev
     mode: 0755
   tags: github
 
@@ -28,11 +30,19 @@
     mode: 0644
   tags: github
 
+- name: Check github repositories exists
+  stat:
+    path: "/home/dev/{{ github_clone_dir_name }}"
+  register: github_repositories_dir
+
 - name: Clone GitHub repository
+  when: not github_repositories_dir.stat.exists
   git:
-    repo: "{{ item.url }}"
-    dest: "/home/dev/{{ item.dir_name }}"
-    key_file: "/home/dev/.ssh/{{ item.key_name }}"
-    ssh_opts: "-o StrictHostKeyChecking=no"
-  with_items: "{{ github_clone_with_ssh }}"
+    repo: "{{ github_clone_url }}"
+    dest: "/home/dev/{{ github_clone_dir_name }}"
+    key_file: "/home/dev/.ssh/{{ github_clone_key_name }}"
+    accept_hostkey: yes
+    update: no
+  become: yes
+  become_user: dev
   tags: github

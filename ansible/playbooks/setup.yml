@@ -9,6 +9,6 @@
     - role: samba
     - role: git
     - role: github
-    - role: aws-sam-local
-    - role: aws-cli
-    - role: aws-dynamodb
+    - role: aws_sam_local
+    - role: aws_cli
+    - role: aws_dynamodb

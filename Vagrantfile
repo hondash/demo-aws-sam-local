@@ -20,16 +20,16 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "ansible_local" do |ansible|
-    # see available version https://pypi.python.org/pypi/ansible
+    # @see available version https://pypi.python.org/pypi/ansible
     ansible.install_mode = "pip"
-    ansible.version = "2.5.0b1"
+    ansible.version = "2.5.0rc2"
+    ansible.compatibility_mode = "2.0"
     ansible.become = true
     ansible.become_user = "root"
-    ansible.compatibility_mode = "2.0"
     ansible.config_file = "./ansible/ansible.cfg"
     ansible.inventory_path = "./ansible/inventories"
     ansible.playbook = "./ansible/playbooks/setup.yml"
-    #ansible.verbose = "-vvvv"
+    #ansible.verbose = "-vvv"
   end
 
   # Create a forwarded port mapping which allows access to a specific port

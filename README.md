@@ -1,24 +1,31 @@
-### Use VM
+### VM を使ってローカル環境構築
 
-1. install [Vagrant](https://www.vagrantup.com/) & [VirtualBox](http://www.oracle.com/technetwork/server-storage/virtualbox/downloads/index.html) 
-1. execute the following command.
-   `vagrant up dev`.
-1. login VM
+1. [Vagrant](https://www.vagrantup.com/) & [VirtualBox](http://www.oracle.com/technetwork/server-storage/virtualbox/downloads/index.html) をインストールする
+1. 以下のコマンドを実行する
+   `vagrant up dev`
+1. VM に SSH 接続する
+    * IP address: 192.168.55.10
+    * port 22
+    * user: dev
+    * password: dev
    
-### Local For Mac
+### Macでローカル環境構築
 
 1. dynamodb
-    1. install [docker for Mac](https://www.docker.com/docker-mac)
-    1. execute following commands.  
-       `cd docker`  
-       `docker-compose up`
-1. sam local
-    1. install [aws-sam-local](https://github.com/awslabs/aws-sam-local)
-    1. exec the following command.
-       `sam --version`
-1. aws-cli
-    1. install pip `easy_install pip`
-    1. install aws-cli `pip install awscli`
+    1. [docker for Mac](https://www.docker.com/docker-mac) をインストールする
+    1. 以下のコマンドを実行する   
+```
+$ git clone https://github.com/honpya/demo-aws-sam-dynamodb-local.git
+$ cd demo-aws-sam-dynamodb-local/docker
+$ docker-compose -d up
+```
+2. sam local
+    1. [aws-sam-local](https://github.com/awslabs/aws-sam-local) をインストールする
+3. aws-cli
+    1. pip をインストールする
+       `easy_install pip`
+    1. aws-cli をインストールする
+       `pip install awscli`
     
 ---
 

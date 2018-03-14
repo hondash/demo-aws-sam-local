@@ -66,12 +66,12 @@ $ ./set-endpoint.sh
 $ sam local invoke -e event-list.json ConnectDynamodb --docker-network docker_SamDynamodb
 ```
 
-## SAM Api Sample
+## SAM API Sample
 
 ※ VM上で 動かす場合は host を `0.0.0.0` で起動しないとホストOSのブラウザからアクセスできない
 
 ```sh
-$ cd /workspace/src/api
+$ cd /home/dev/demo-aws-sam-dynamodb-local/src/api
 $ sam local start-api --host 0.0.0.0 --docker-network docker_SamDynamodb
 ```
 

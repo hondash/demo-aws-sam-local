@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "ansible_local" do |ansible|
     # @see available version https://pypi.python.org/pypi/ansible
     ansible.install_mode = "pip"
-    ansible.version = "2.5.0rc2"
+    ansible.version = "2.5.0"
     ansible.compatibility_mode = "2.0"
     ansible.become = true
     ansible.become_user = "root"

@@ -1,6 +1,6 @@
-'use strict';
-console.log('Loading function');
+'use strict'
+console.log('Loading function')
 
-exports.handler = (event, context, callback) => {
-    callback(null, `Hello, ${event.name}!`);
-};
+exports.handler = async (event, context, callback) => {
+    return `Hello, ${event.name}!`
+}

@@ -7,7 +7,7 @@ const dynamodb = new AWS.DynamoDB({
   endpoint: 'http://172.19.0.1:8000'
 });
 
-exports.handler = (event, context, callback) => {
+exports.handler = async (event, context, callback) => {
 
     if (event.action === "LIST") {
         const params = {};
@@ -31,5 +31,5 @@ exports.handler = (event, context, callback) => {
       console.log(`"${event.action}" action is not exists.`);
     }
 
-    callback(null, '********** Finished function **********');
+    return '********** Finished function **********';
 };
